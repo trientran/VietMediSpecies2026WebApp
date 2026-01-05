@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnamese Medicinal Plant Species Database</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Vietnamese Medicinal Plant Species Database</h1>
+        <p class="subtitle">A comprehensive catalog of medicinal plant species found in Vietnam</p>
+    </header>
+
+    <main>
+        <section class="controls">
+            <div class="search-box">
+                <label for="search">Search:</label>
+                <input type="text" id="search" placeholder="Search by name, family, or Vietnamese name...">
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="familyFilter">Family:</label>
+                    <select id="familyFilter">
+                        <option value="">All Families</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="classFilter">Class:</label>
+                    <select id="classFilter">
+                        <option value="">All Classes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats">
+                <span id="resultCount">Loading...</span>
+            </div>
+        </section>
+
+        <section class="data-source">
+            <p>Data source: <code>viet_medi_species_2026_metadata.csv</code></p>
+            <div class="file-upload">
+                <label for="fileInput">Or load your own CSV/JSON file:</label>
+                <input type="file" id="fileInput" accept=".csv,.json">
+            </div>
+        </section>
+
+        <section class="table-container">
+            <table id="speciesTable">
+                <thead>
+                    <tr>
+                        <th data-sort="canonicalName">Scientific Name <span class="sort-icon"></span></th>
+                        <th data-sort="vietnameseName">Vietnamese Name <span class="sort-icon"></span></th>
+                        <th data-sort="family">Family <span class="sort-icon"></span></th>
+                        <th data-sort="genus">Genus <span class="sort-icon"></span></th>
+                        <th data-sort="class">Class <span class="sort-icon"></span></th>
+                        <th data-sort="vernacularName">Common Name <span class="sort-icon"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <td colspan="6" class="loading">Loading data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="pagination">
+            <button id="prevPage" disabled>Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button id="nextPage">Next</button>
+            <select id="pageSize">
+                <option value="25">25 per page</option>
+                <option value="50" selected>50 per page</option>
+                <option value="100">100 per page</option>
+                <option value="all">Show all</option>
+            </select>
+        </section>
+    </main>
+
+    <footer>
+        <p>Vietnamese Medicinal Plant Species Database &copy; 2026</p>
+    </footer>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle">Species Details</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
